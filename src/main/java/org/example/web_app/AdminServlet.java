@@ -12,6 +12,7 @@ public class AdminServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+        // Đã vào đây, Chị Ngân
     }
 
     @Override
