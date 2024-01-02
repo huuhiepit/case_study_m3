@@ -17,6 +17,7 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Hello world 2
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 //        Hello word
     }
