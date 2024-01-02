@@ -10,6 +10,8 @@ import java.io.IOException;
 @WebServlet(name = "AdminServlet", urlPatterns = "/admin")
 public class AdminServlet extends HttpServlet {
     @Override
+
+    // hrlo kitty
     public void init() throws ServletException {
         super.init();
     }
