@@ -11,13 +11,12 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
     @Override
 
-    // hrlo kitty
     public void init() throws ServletException {
         super.init();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("admin/register.jsp").forward(req, resp);
+        req.getRequestDispatcher("admin/trangchu.jsp").forward(req, resp);
     }
 }

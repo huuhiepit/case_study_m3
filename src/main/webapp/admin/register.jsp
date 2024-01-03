@@ -64,7 +64,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
                         <h1 class="text-white">Welcome!</h1>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
