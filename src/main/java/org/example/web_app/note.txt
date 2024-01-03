@@ -1,0 +1,5 @@
+org.
+    controller: nơi chứa các servlet
+    dao: nơi chứa các phương thức xử lý dữ liệu CRUD, tìm kiếm, sắp xếp
+    filter: nơi xử lý code trước hoặc sau 1 giai đoạn nhất định trong request.
+    service: nơi chứa logic nghiệp vụ và thực hiện các thao tác chính của ứng dụng như tính toán, xử lý dữ liệu và gọi các phương thức của DAO. Nó hoạt động như lớp trung gian giữa Controller và DAO

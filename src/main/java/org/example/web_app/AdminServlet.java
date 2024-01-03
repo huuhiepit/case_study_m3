@@ -12,13 +12,10 @@ public class AdminServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        // Đã vào đây, Chị Ngân
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Hello world 2
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-//        Hello word
+        req.getRequestDispatcher("admin/register.jsp").forward(req, resp);
     }
 }
