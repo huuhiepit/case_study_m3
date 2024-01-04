@@ -30,20 +30,60 @@ public class LoginServlet extends HttpServlet {
        }
     }
 
+//    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+//    }
+
+    private void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+    }
+
     private void showLogin(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession session = req.getSession();
         Employee employee = (Employee) session.getAttribute("employee");
         if(employee !=null){
-            if(employee.getRole().getRoleName().equalsIgnoreCase("Admin")){
-                resp.sendRedirect("/admin?action=Manager");
-            }else if(employee.getRole().getRoleName().equalsIgnoreCase("Employee")){
-                req.getRequestDispatcher("/user/staff/productTotal.jsp").forward(req, resp);
-            }else req.getRequestDispatcher("/user/client_undefine/shopping.jsp").forward(req,resp);
-        }else req.getRequestDispatcher("login/login.jsp").forward(req, resp);
+            if(employee.getRole().role.equalsIgnoreCase("Admin")){
+                resp.sendRedirect("/admin");
+            }else if(employee.getRole().role.equalsIgnoreCase("Nhân viên")){
+                req.getRequestDispatcher("/admin/index.jsp").forward(req, resp);
+            }else req.getRequestDispatcher("/admin").forward(req,resp);
+        }else req.getRequestDispatcher("admin/login.jsp").forward(req, resp);
     }
 
-
-
-
-
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action){
+            case "login":
+                logout(req, resp);
+                break;
+            case "register":
+                register(req, resp);
+                break;
+        }
+    }
+    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String phone = req.getParameter("phone");
+        String address =req.getParameter("address");
+        String email =req.getParameter("email");
+        String username =req.getParameter("username");
+        String password =req.getParameter("password");
+        employeeService.register(name, phone,address,email,username, password);
+        resp.sendRedirect("/login");
+    }
+    private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userName = req.getParameter("userName");
+        String password = req.getParameter("password");
+        if(employeeService.login(userName, password)){
+            String userRole = employeeService.getUserByUserName(userName).getRole().getRoleName();
+            HttpSession session = req.getSession();
+            session.setAttribute("user", employeeService.getUserByUserName(userName));
+            if(userRole.equalsIgnoreCase("Customer")){
+                resp.sendRedirect("/main?message=Login Successfull");
+            }else  resp.sendRedirect("/total?message=Login Successfull");
+        } else resp.sendRedirect("/login?message=Password or username is invalid");
+    }
 }

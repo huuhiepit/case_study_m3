@@ -87,7 +87,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Username" type="text">
+                                    <input name="username" class="form-control" placeholder="Username" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -95,7 +95,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password">
+                                    <input name="password" class="form-control" placeholder="Password" type="password">
                                 </div>
                             </div>
                             <div class="custom-control custom-control-alternative custom-checkbox">

@@ -1,6 +1,6 @@
 package org.example.web_app.model;
 
-import org.example.web_app.model.Role;
+import org.example.web_app.model.en.ERole;
 
 public class Employee {
 
@@ -10,10 +10,10 @@ public class Employee {
     private String address;
     private String userName;
     private String urlImage;
-    private Role role;
+    private ERole role;
 
     public Employee () {}
-    public Employee(long id, String name, String phone, String address, String userName, String urlImage, Role role) {
+    public Employee(long id, String name, String phone, String address, String userName, String urlImage, ERole role) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -71,11 +71,11 @@ public class Employee {
         this.urlImage = urlImage;
     }
 
-    public Role getRole() {
+    public ERole getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(ERole role) {
         this.role = role;
     }
 

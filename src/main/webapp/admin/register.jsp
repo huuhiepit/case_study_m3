@@ -87,7 +87,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Name" type="text">
+                                    <input name="name" class="form-control" placeholder="Name" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -95,7 +95,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Phone" type="text">
+                                    <input name="phone" class="form-control" placeholder="Phone" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -103,7 +103,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-istanbul"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Address" type="text">
+                                    <input name="address" class="form-control" placeholder="Address" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -111,7 +111,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Email" type="email">
+                                    <input name="email" class="form-control" placeholder="Email" type="email">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -119,7 +119,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Username" type="text">
+                                    <input name="username" class="form-control" placeholder="Username" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -127,7 +127,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password">
+                                    <input name="password" class="form-control" placeholder="Password" type="password">
                                 </div>
                             </div>
                             <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
