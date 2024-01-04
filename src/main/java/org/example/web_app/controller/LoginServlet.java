@@ -41,17 +41,9 @@ public class LoginServlet extends HttpServlet {
             }else req.getRequestDispatcher("/user/client_undefine/shopping.jsp").forward(req,resp);
         }else req.getRequestDispatcher("login/login.jsp").forward(req, resp);
     }
-        }
-    }
 
-//    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getRequestDispatcher("login/register.jsp").forward(req, resp);
-//    }
-//
-//    private void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        HttpSession session = req.getSession();
-//        session.invalidate();
-//        req.getRequestDispatcher("login/login.jsp").forward(req, resp);
-//    }
+
+
+
 
 }
