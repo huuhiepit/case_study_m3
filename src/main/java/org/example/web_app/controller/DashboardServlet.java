@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DashboardServlet", urlPatterns = "/dashboard")
+@WebServlet(name = "dashboardServlet", urlPatterns = "/dashboard")
 public class DashboardServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
