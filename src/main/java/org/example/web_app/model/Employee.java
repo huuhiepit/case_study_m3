@@ -23,6 +23,15 @@ public class Employee {
         this.role = role;
     }
 
+    public Employee(long id, String name, String phone, String address, String userName, String urlImage) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.userName = userName;
+        this.urlImage = urlImage;
+    }
+
     public long getId() {
         return id;
     }
