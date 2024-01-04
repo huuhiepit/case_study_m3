@@ -14,7 +14,7 @@ public class ConnectionDB {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
-            System.out.println("Suc");
+            System.out.println("Connection Success!!");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

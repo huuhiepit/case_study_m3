@@ -5,7 +5,7 @@
   Time: 10:48 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
@@ -60,294 +60,43 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Seat</th>
-                                    <th scope="col">Status</th>
                                     <th scope="col">Type</th>
+                                    <th scope="col">Số lượng hành trình</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
+                                <c:forEach var="tour" items="${tourList}">
+<%--                                    long id, String name, String urlImage, EType type, int total--%>
+                                    <tr id="tour-${tour.id}">
+                                        <td scope="row">
+                                            <div class="media align-items-center">
+                                                <a href="#" class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="../assets/img/tour/${tour.urlImage}">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="mb-0 text-sm">${tour.name}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
+                                        </td>
+                                        <td>
+                                            ${tour.type.getType()}
+                                        </td>
+                                        <td>${tour.total}</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                    <a class="dropdown-item text-blue" href="#">Edit</a>
+                                                    <a class="dropdown-item text-red" href="#">Delete</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/tour/lang-van-hoa-thap-phan-gia-tot-du-lich-viet.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">Du lịch Phú Quốc mùa Xuân...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2,500 USD
-                                    </td>
-                                    <td>10 chỗ</td>
-                                    <td>
-                                        <span class="badge badge-dot">
-                                            <i class="bg-success"></i> completed
-                                        </span>
-                                    </td>
-                                    <td>
-                                        Trong nước
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item text-blue" href="#">Edit</a>
-                                                <a class="dropdown-item text-red" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
