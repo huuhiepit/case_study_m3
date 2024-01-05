@@ -8,4 +8,7 @@ public enum EStatus {
         this.status = status;
     }
 
+    public String getStatus() {
+        return status;
+    }
 }

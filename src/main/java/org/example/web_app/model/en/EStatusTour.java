@@ -7,4 +7,8 @@ public enum EStatusTour {
     EStatusTour(String status) {
         this.status = status;
     }
+
+    public String getStatus() {
+        return status;
+    }
 }

@@ -91,6 +91,7 @@
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item text-blue" href="/manager-tour?action=edit&id=${tour.id}">Edit</a>
                                                     <a class="dropdown-item text-red" onclick="return confirm('Bạn có muốn xóa Tour: ${tour.name} này không?')" href="/manager-tour?action=delete&id=${tour.id}">Delete</a>
+                                                    <a class="dropdown-item text-blue" href="/manager-description-tour?id=${tour.id}">Xem các hành trình</a>
                                                 </div>
                                             </div>
                                         </td>
