@@ -1,6 +1,7 @@
 package org.example.web_app.controller;
 
 import org.example.web_app.model.Employee;
+import org.example.web_app.service.EmployeeService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
+    private EmployeeService employeeService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String action = req.getParameter("action");
@@ -57,7 +59,7 @@ public class LoginServlet extends HttpServlet {
         }
         switch (action){
             case "login":
-                logout(req, resp);
+                login(req, resp);
                 break;
             case "register":
                 register(req, resp);
@@ -71,19 +73,23 @@ public class LoginServlet extends HttpServlet {
         String email =req.getParameter("email");
         String username =req.getParameter("username");
         String password =req.getParameter("password");
-        employeeService.register(name, phone,address,email,username, password);
+        employeeService.register( name, phone, address, email, username, password);
         resp.sendRedirect("/login");
     }
     private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
         if(employeeService.login(userName, password)){
-            String userRole = employeeService.getUserByUserName(userName).getRole().getRoleName();
+            String employeeRole = employeeService.getEmployeeByName(userName).getRole().role;
             HttpSession session = req.getSession();
-            session.setAttribute("user", employeeService.getUserByUserName(userName));
-            if(userRole.equalsIgnoreCase("Customer")){
+            session.setAttribute("account", employeeService.getEmployeeByName(userName));
+            if(employeeRole.equalsIgnoreCase("Customer")){
                 resp.sendRedirect("/main?message=Login Successfull");
             }else  resp.sendRedirect("/total?message=Login Successfull");
         } else resp.sendRedirect("/login?message=Password or username is invalid");
+    }
+    @Override
+    public void init() throws ServletException {
+        employeeService = new EmployeeService();
     }
 }

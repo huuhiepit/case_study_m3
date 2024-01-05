@@ -1,9 +1,6 @@
 package org.example.web_app.model;
 
-<<<<<<< HEAD
-public class Tour {
 
-=======
 import org.example.web_app.model.en.EStatusTour;
 import org.example.web_app.model.en.EType;
 
@@ -72,5 +69,4 @@ public class Tour {
                 ", type=" + type +
                 '}';
     }
->>>>>>> 3277c848528f92dd65a8cebd7063b8a0c01cbebc
 }
