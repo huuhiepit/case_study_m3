@@ -53,17 +53,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/icons.html">
+                    <a class="nav-link " href="./manager-tour">
                         <i class="ni ni-planet text-blue"></i> Manager Tour
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/profile.html">
+                    <a class="nav-link " href="./">
                         <i class="ni ni-single-02 text-yellow"></i> Manager Tourist
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/tables.html">
+                    <a class="nav-link " href="./manager-employee">
                         <i class="ni ni-building text-red"></i> Manager Employee
                     </a>
                 </li>

@@ -1,6 +1,7 @@
 package org.example.web_app.model;
 
 import org.example.web_app.model.en.EStatus;
+import org.example.web_app.model.en.EStatusTour;
 
 import java.time.LocalDate;
 
@@ -10,14 +11,12 @@ public class DescriptionTour {
     private LocalDate dateEnd;
     private int seat;
     private long price;
-    private EStatus status;
+    private EStatusTour status;
     private String description;
     private long idTour;
-    private String tourName;
-    private String urlImage;
 
     public DescriptionTour() {}
-    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatus status, String description, long idTour) {
+    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour) {
         this.id = id;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -27,18 +26,23 @@ public class DescriptionTour {
         this.description = description;
         this.idTour = idTour;
     }
-
-    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatus status, String description, long idTour, String tourName, String urlImage) {
+    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, String description) {
         this.id = id;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.seat = seat;
         this.price = price;
-        this.status = status;
         this.description = description;
         this.idTour = idTour;
-        this.tourName = tourName;
-        this.urlImage = urlImage;
+    }
+
+    public DescriptionTour(LocalDate dateStart, LocalDate dateEnd, int seat, long price, String description, long idTour) {
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.seat = seat;
+        this.price = price;
+        this.description = description;
+        this.idTour = idTour;
     }
 
     public long getId() {
@@ -81,11 +85,11 @@ public class DescriptionTour {
         this.price = price;
     }
 
-    public EStatus getStatus() {
+    public EStatusTour getStatus() {
         return status;
     }
 
-    public void setStatus(EStatus status) {
+    public void setStatus(EStatusTour status) {
         this.status = status;
     }
 
@@ -105,22 +109,6 @@ public class DescriptionTour {
         this.idTour = idTour;
     }
 
-    public String getTourName() {
-        return tourName;
-    }
-
-    public void setTourName(String tourName) {
-        this.tourName = tourName;
-    }
-
-    public String getUrlImage() {
-        return urlImage;
-    }
-
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
-    }
-
     @Override
     public String toString() {
         return "DescriptionTour{" +
@@ -132,8 +120,6 @@ public class DescriptionTour {
                 ", status=" + status +
                 ", description='" + description + '\'' +
                 ", idTour=" + idTour +
-                ", tourName='" + tourName + '\'' +
-                ", urlImage='" + urlImage + '\'' +
                 '}';
     }
 }
