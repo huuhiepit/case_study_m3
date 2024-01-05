@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
+        Add tour
     </title>
     <!-- Favicon -->
     <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
@@ -64,9 +64,18 @@
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">Welcome to page Admin!</h1>
+                        <h1 class="text-white">Manager tour!</h1>
                     </div>
                 </div>
+                <c:if test="${error != null}">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+                        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                        <span class="alert-text"><strong>Danger!</strong> ${error}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
@@ -81,33 +90,57 @@
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
-                        <form role="form">
-                            <div class="form-group mb-3">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+
+                        <c:choose>
+                            <c:when test="${tour != null}">
+                                <form method="post">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Name</label>
+                                        <input name="name" class="form-control" value="${tour.name}" type="text">
                                     </div>
-                                    <input class="form-control" placeholder="Username" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Thể loại</label>
+                                        <select  name="type" class="form-control" >
+                                            <option value="${tour.type}">${tour.type.getType()}</option>
+                                            <c:forEach var="type" items="${typeList}">
+                                                <option value="${type}">${type.getType()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password">
-                                </div>
-                            </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                                <label class="custom-control-label" for=" customCheckLogin">
-                                    <span class="text-muted">Remember me</span>
-                                </label>
-                            </div>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-primary my-4">Sign in</button>
-                            </div>
-                        </form>
+                                    <div class="form-group">
+                                        <label class="form-control-label">URL Image</label>
+                                        <input name="urlImage" value="${tour.urlImage}" class="form-control" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </div>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <form method="post">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Name</label>
+                                        <input name="name" class="form-control" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Thể loại</label>
+                                        <select  name="type" class="form-control" >
+                                            <option value="">Chọn loại du lịch</option>
+                                            <c:forEach var="type" items="${typeList}">
+                                                <option value="${type}">${type.getType()}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">URL Image</label>
+                                        <input name="urlImage" class="form-control" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Add</button>
+                                    </div>
+                                </form>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>

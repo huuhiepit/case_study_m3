@@ -12,8 +12,12 @@ public class DescriptionTour {
     private long price;
     private EStatus status;
     private String description;
+    private long idTour;
+    private String tourName;
+    private String urlImage;
 
-    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatus status, String description) {
+    public DescriptionTour() {}
+    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatus status, String description, long idTour) {
         this.id = id;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -21,6 +25,20 @@ public class DescriptionTour {
         this.price = price;
         this.status = status;
         this.description = description;
+        this.idTour = idTour;
+    }
+
+    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatus status, String description, long idTour, String tourName, String urlImage) {
+        this.id = id;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.seat = seat;
+        this.price = price;
+        this.status = status;
+        this.description = description;
+        this.idTour = idTour;
+        this.tourName = tourName;
+        this.urlImage = urlImage;
     }
 
     public long getId() {
@@ -79,6 +97,30 @@ public class DescriptionTour {
         this.description = description;
     }
 
+    public long getIdTour() {
+        return idTour;
+    }
+
+    public void setIdTour(long idTour) {
+        this.idTour = idTour;
+    }
+
+    public String getTourName() {
+        return tourName;
+    }
+
+    public void setTourName(String tourName) {
+        this.tourName = tourName;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
     @Override
     public String toString() {
         return "DescriptionTour{" +
@@ -89,6 +131,9 @@ public class DescriptionTour {
                 ", price=" + price +
                 ", status=" + status +
                 ", description='" + description + '\'' +
+                ", idTour=" + idTour +
+                ", tourName='" + tourName + '\'' +
+                ", urlImage='" + urlImage + '\'' +
                 '}';
     }
 }

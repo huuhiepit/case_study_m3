@@ -19,6 +19,19 @@ public class Tour {
         this.total = total;
     }
 
+    public Tour(long id, String name, String urlImage, EType type) {
+        this.id = id;
+        this.name = name;
+        this.urlImage = urlImage;
+        this.type = type;
+    }
+
+    public Tour(String name, String urlImage, EType type) {
+        this.name = name;
+        this.urlImage = urlImage;
+        this.type = type;
+    }
+
     public long getId() {
         return id;
     }
