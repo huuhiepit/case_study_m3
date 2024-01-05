@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nhhie
-  Date: 1/3/2024
-  Time: 10:48 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -13,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        Manager Tour
+        Manager Description Tour
     </title>
     <!-- Favicon -->
     <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png">
@@ -67,7 +60,7 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach var="tour" items="${tourList}">
-<%--                                    long id, String name, String urlImage, EType type, int total--%>
+                                    <%--                                    long id, String name, String urlImage, EType type, int total--%>
                                     <tr id="tour-${tour.id}">
                                         <td scope="row">
                                             <div class="media align-items-center">
@@ -80,7 +73,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            ${tour.type.getType()}
+                                                ${tour.type.getType()}
                                         </td>
                                         <td>${tour.total}</td>
                                         <td class="text-right">
@@ -89,8 +82,8 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item text-blue" href="/manager-tour?action=edit&id=${tour.id}">Edit</a>
-                                                    <a class="dropdown-item text-red" onclick="return confirm('Bạn có muốn xóa Tour: ${tour.name} này không?')" href="/manager-tour?action=delete&id=${tour.id}">Delete</a>
+                                                    <a class="dropdown-item text-blue" href="#">Edit</a>
+                                                    <a class="dropdown-item text-red" href="#">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -149,7 +142,6 @@
 <!--   Argon JS   -->
 <script src="./assets/js/argon-dashboard.min.js?v=1.1.2"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-
 </body>
 
 </html>
