@@ -20,6 +20,7 @@ public class TourServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         tourDAO = new TourDAO();
+
         tourService = new TourService();
     }
 

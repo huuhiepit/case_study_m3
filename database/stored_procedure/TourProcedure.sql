@@ -1,7 +1,7 @@
 DELIMITER //
 CREATE PROCEDURE insertIntoTour(IN tourName VARCHAR(255), IN imageUrl VARCHAR(50), IN tourType VARCHAR(20))
 BEGIN
-INSERT INTO Tour(name, urlImage, type) VALUES(tourName, imageUrl, tourType);
+INSERT INTO Tours(name, urlImage, type) VALUES(tourName, imageUrl, tourType);
 END //
 DELIMITER ;
 

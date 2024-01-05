@@ -9,6 +9,15 @@ public class Employee {
     private String address;
     private String userName;
     private String urlImage;
+
+    public Employee(String name, String phone, String address, String userName, String urlImage) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.userName = userName;
+        this.urlImage = urlImage;
+    }
+
     private ERole role;
 
     public Employee () {}
@@ -29,6 +38,12 @@ public class Employee {
         this.address = address;
         this.userName = userName;
         this.urlImage = urlImage;
+    }
+
+    public Employee(String name, String phone, String address) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
     }
 
     public long getId() {

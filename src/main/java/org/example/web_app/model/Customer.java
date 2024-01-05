@@ -19,6 +19,14 @@ public class Customer {
         this.userName = userName;
     }
 
+    public Customer(String name, String phone, String address, String email, String userName) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.userName = userName;
+    }
+
     public long getId() {
         return id;
     }
