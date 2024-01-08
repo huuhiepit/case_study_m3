@@ -18,6 +18,7 @@ public class DescriptionTourDAO extends ConnectionDB implements IDescriptionTour
     protected String INSERT_INTO_DESCRIPTION_TOUR = "call db_manager_tour.insertIntoDescriptionTour(?, ?, ?, ?, ?, ?);\n";
     protected String UPDATE_DESCRIPTION_BY_ID = "call db_manager_tour.updateDescriptionTour(?, ?, ?, ?, ?, ?);\n";
     protected String DELETE_DESCRIPTION = "call db_manager_tour.deleteDescriptionTour(?);";
+    protected String VIEW_BOOKING_SEAT_SQL = "SELECT * FROM db_manager_tour.view_booking_seat where tours_id = ?;";
     @Override
     public List<DescriptionTour> getAll(long idTour) {
         List<DescriptionTour> descriptionTours = new ArrayList<>();
@@ -39,6 +40,34 @@ public class DescriptionTourDAO extends ConnectionDB implements IDescriptionTour
                         rs.getString("description"),
                         idTour
                         ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return descriptionTours;
+    }
+    @Override
+    public List<DescriptionTour> getBookingDescriptionTourBy(long idTour) {
+        List<DescriptionTour> descriptionTours = new ArrayList<>();
+        try {
+            PreparedStatement statement = getConnection().prepareStatement(VIEW_BOOKING_SEAT_SQL);
+            statement.setLong(1, idTour);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+//                long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatus status, String description, long idTour
+                LocalDate dateStart = rs.getDate("dateStart").toLocalDate();
+                LocalDate dateEnd = rs.getDate("dateEnd").toLocalDate();
+                descriptionTours.add(new DescriptionTour(rs.getLong("id"),
+                        dateStart,
+                        dateEnd,
+                        rs.getInt("seat"),
+                        rs.getLong("price"),
+                        EStatusTour.valueOf(rs.getString("status")),
+                        rs.getString("description"),
+                        idTour,
+                        rs.getInt("seatResidual")
+                ));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

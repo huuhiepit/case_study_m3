@@ -18,8 +18,18 @@ public class TourService {
     }
     public void create(HttpServletRequest rq, HttpServletResponse resp) throws ServletException, IOException {
         String name = rq.getParameter("name");
+        String error = "";
         if(rq.getParameter("name").isEmpty()) {
-            rq.setAttribute("error", "Vui lòng nhập tên tour");
+            error += "Vui lòng nhập tên tour";
+        }
+        if(rq.getParameter("type").isEmpty()) {
+            error += ". Vui lòng chọn loại hình tour . ";
+        }
+        if(rq.getParameter("urlImage").isEmpty()) {
+            error += "Vui lòng nhập tên file ảnh";
+        }
+        if(!error.isEmpty()) {
+            rq.setAttribute("error", error);
             rq.setAttribute("typeList", EType.values());
             rq.getRequestDispatcher("admin/add_tour.jsp").forward(rq, resp);
         }
