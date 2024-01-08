@@ -1,10 +1,12 @@
 package org.example.web_app.dao;
 
+import org.example.web_app.model.en.EStatus;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionDB {
+public abstract class ConnectionDB {
     private final String JDBC_URL = "jdbc:mysql://localhost:3306/db_manager_tour";
     private final String JDBC_USERNAME = "root";
     private final String JDBC_PASSWORD = "huuhiep123";

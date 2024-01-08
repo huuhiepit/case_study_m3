@@ -14,6 +14,7 @@ public class DescriptionTour {
     private EStatusTour status;
     private String description;
     private long idTour;
+    private int seatResidual;
 
     public DescriptionTour() {}
     public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour) {
@@ -43,6 +44,26 @@ public class DescriptionTour {
         this.price = price;
         this.description = description;
         this.idTour = idTour;
+    }
+
+    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour, int seatResidual) {
+        this.id = id;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.seat = seat;
+        this.price = price;
+        this.status = status;
+        this.description = description;
+        this.idTour = idTour;
+        this.seatResidual = seatResidual;
+    }
+
+    public int getSeatResidual() {
+        return seatResidual;
+    }
+
+    public void setSeatResidual(int seatResidual) {
+        this.seatResidual = seatResidual;
     }
 
     public long getId() {

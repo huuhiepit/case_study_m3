@@ -110,6 +110,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success">Update</button>
+                                        <a href="/manager-description-tour?id=${tour.id}" class="btn btn-info">Return</a>
                                     </div>
                                 </form>
                             </c:when>
@@ -137,6 +138,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success">Add</button>
+                                        <a href="/manager-description-tour?id=${tour.id}" class="btn btn-info">Return</a>
                                     </div>
                                 </form>
                             </c:otherwise>

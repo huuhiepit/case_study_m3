@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.header-top {
+    background: linear-gradient(90deg,#ed0080 0,#be3b98 100%);
+}
+
+.header-top-left {
+    color: #fff;
+    font-weight: bold;
+}
+
+.header-top-left > span {
+    font-size: 1.2rem;
+    color: yellow;
+    font-weight: 900;
+}
+
+.header-top-right > ul > li > .nav-link {
+    color: #fff !important;
+}
+
+.nav-item:hover {
+    background: rgb(75, 74, 74, 0.5);
+}
+
+.box-img {
+    position: relative;
+}
+.box-img > a > img {
+    width: 100%;
+}
+
+.box-ib {
+    position: absolute;
+    z-index: 999;
+    bottom: 0px;
+    left: 0px;
+    background: #291a1a;
+    padding: 6px;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: 700;
+}
+
+.box-info {
+    text-align: start;
+}
+
+.box-name {
+    background: #E5E5E5;
+    padding: 4px 10px;
+}
+
+.box-name > a:hover {
+    color: #be3b98;
+}
+
+.box-name > a {
+    color: #291a1a;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.box-wrap {
+    padding: 10px 18px;
+    line-height: 24px;
+    position: relative;
+}
+
+.box-wrap > div > i {
+    margin-right: 8px;
+}
+
+.box-discount {
+    color: red;
+    font-weight: 800;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 18px;
+}
+
+.col {
+    margin-bottom: 32px;
+}
+
+.box-item {
+    border: 0.5px solid #a69f9f97 ;
+    transition: 1s;
+}
+
+.box-item:hover {
+    border: 1px solid #201a1a;
+}
