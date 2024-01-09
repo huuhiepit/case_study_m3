@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BookingDAO extends ConnectionDB implements IBookingDAO {
     protected String VIEW_ALL_BOOKINGS = "SELECT * FROM db_manager_tour.view_bookings;";
-    protected String HANDLE_PROCESSING_TOUR_SQL = "call db_manager_tour.handleProcessingTour(?, ?);\n";
+    protected String HANDLE_PROCESSING_TOUR_SQL = "call db_manager_tour.handleProcessingTour(?, ?, ?);\n";
     protected String CREATE_BOOKING_CUSTOMER = "call db_manager_tour.insertIntoBooking(?, ?, ?, ?, ?);";
     @Override
     public List<Booking> getAll() {
@@ -52,11 +52,12 @@ public class BookingDAO extends ConnectionDB implements IBookingDAO {
         return bookingList;
     }
     @Override
-    public void handleTourBooking(long id, EStatus status) {
+    public void handleTourBooking(long id, long idEmployee,EStatus status) {
         try {
             PreparedStatement statement = getConnection().prepareStatement(HANDLE_PROCESSING_TOUR_SQL);
             statement.setLong(1, id);
-            statement.setString(2, status + "");
+            statement.setLong(2, idEmployee);
+            statement.setString(3, status + "");
 
             System.out.println(statement);
             statement.executeUpdate();

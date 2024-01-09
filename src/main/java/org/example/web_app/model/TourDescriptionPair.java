@@ -1,4 +1,4 @@
-package org.example.web_app.util;
+package org.example.web_app.model;
 
 import org.example.web_app.model.DescriptionTour;
 import org.example.web_app.model.Tour;
@@ -22,4 +22,20 @@ public class TourDescriptionPair {
     public  List<DescriptionTour> getDescriptionTour() {
         return descriptionTourList;
     }
+    public int getTotalDescription() {
+        return this.descriptionTourList.size();
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
+
+    public List<DescriptionTour> getDescriptionTourList() {
+        return descriptionTourList;
+    }
+
+    public void setDescriptionTourList(List<DescriptionTour> descriptionTourList) {
+        this.descriptionTourList = descriptionTourList;
+    }
+
 }

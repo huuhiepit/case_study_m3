@@ -43,10 +43,10 @@
                             <div>
                                 <br>
                                 <label>
-                                    <select class="btn btn-secondary">
+                                    <select id="selectSearchType" class="btn btn-secondary">
                                         <option value="">Chọn loại tìm kiếm</option>
-                                        <option value="">Trong nước</option>
-                                        <option value="">Ngoài nước</option>
+                                        <option value="domestic" <c:if test="${type = 'DOMESTIC'}">selected</c:if> >Trong nước</option>
+                                        <option value="foreign" <c:if test="${type = 'FOREIGN'}">selected</c:if> >Ngoài nước</option>
                                     </select>
                                 </label>
                                 <a href="/manager-tour?action=create" class="btn btn-outline-secondary">
@@ -101,31 +101,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card-footer py-4">
-                            <nav aria-label="...">
-                                <ul class="pagination justify-content-end mb-0">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">
-                                            <i class="fas fa-angle-left"></i>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a class="page-link" href="#">1</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">
-                                            <i class="fas fa-angle-right"></i>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -140,7 +116,23 @@
     </div>
 
 </div>
+<script>
+    // Lắng nghe sự kiện thay đổi trên phần tử select
+    document.getElementById('selectSearchType').addEventListener('change', function() {
+        // Lấy giá trị được chọn
+        var selectedValue = this.value;
 
+        // Kiểm tra giá trị và chuyển hướng trang
+        if (selectedValue === 'domestic') {
+            window.location.href = '/manager-tour?action=search&type=DOMESTIC'; // Thay 'duong-dan-trong-nuoc' bằng đường dẫn cần chuyển
+        } else if (selectedValue === 'foreign') {
+            window.location.href = '/manager-tour?action=search&type=FOREIGN'; // Thay 'duong-dan-ngoai-nuoc' bằng đường dẫn cần chuyển
+        } else {
+            // Xử lý trường hợp giá trị không xác định
+            alert('Vui lòng chọn loại tìm kiếm.');
+        }
+    });
+</script>
 <!--   Core   -->
 <script src="./assets/js/plugins/jquery/dist/jquery.min.js"></script>
 <script src="./assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
