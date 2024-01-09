@@ -3,6 +3,7 @@ package org.example.web_app.model;
 import org.example.web_app.model.en.EPay;
 import org.example.web_app.model.en.EStatus;
 import org.example.web_app.model.en.EStatusTour;
+import org.example.web_app.util.ConvertToVND;
 
 import java.time.LocalDate;
 
@@ -176,6 +177,9 @@ public class Booking {
 
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
+    }
+    public String getCurrentVND() {
+        return ConvertToVND.convertToVND(this.totalPrice);
     }
 
     @Override

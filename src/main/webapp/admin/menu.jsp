@@ -47,19 +47,19 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item  active ">
-                    <a class="nav-link  active " href="./index.html">
-                        <i class="ni ni-tv-2 text-primary"></i> Dashboard
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link " href="./manager-tour">
                         <i class="ni ni-planet text-blue"></i> Manager Tour
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./">
-                        <i class="ni ni-single-02 text-yellow"></i> Manager Tourist
+                    <a class="nav-link " href="./manager-booking">
+                        <i class="ni ni-bag-17 text-red"></i> Manager Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="./manager-customer">
+                        <i class="ni ni-single-02 text-yellow"></i> Manager Customer
                     </a>
                 </li>
                 <li class="nav-item">

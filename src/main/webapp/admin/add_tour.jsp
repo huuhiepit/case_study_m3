@@ -103,7 +103,7 @@
                                         <select  name="type" class="form-control" >
                                             <option value="${tour.type}">${tour.type.getType()}</option>
                                             <c:forEach var="type" items="${typeList}">
-                                                <option value="${type}">${type.getType()}</option>
+                                                <c:if test="${type != tour.type}"><option value="${type}">${type.getType()}</option></c:if>
                                             </c:forEach>
                                         </select>
                                     </div>

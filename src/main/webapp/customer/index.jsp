@@ -30,10 +30,10 @@
                                 <a class="nav-link" href="#"><i class="fa-solid fa-sitemap"></i> Hệ thống giao dịch</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa-solid fa-handshake"></i> Đại lý đăng ký</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/auth"><i class="fa-solid fa-handshake"></i> Đăng nhập</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa-solid fa-file-lines"></i> Phiếu góp ý</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/auth?action=register"><i class="fa-solid fa-file-lines"></i> Đăng ký</a>
                             </li>
                         </ul>
                     </div>
@@ -43,16 +43,14 @@
         <div class="header-bottom">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-xl">
-                    <a class="navbar-brand" href="#">Navbar</a>
+                    <a class="navbar-brand" href="#">Du Lịch Việt</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/manager-tour">Admin</a>
                         </div>
                     </div>
                 </div>
@@ -87,8 +85,8 @@
         </div>
         <div class="tour-home">
             <div class="container-xl">
-                <div class="title-home">
-                    TOUR TRONG NƯỚC
+                <div class="title-home" style="font-size: 24px; margin: 18px 0;color: red;">
+                    TOUR DU LỊCH
                 </div>
                 <div class="content-home">
                     <div class="text-center">
@@ -162,7 +160,9 @@
                                                                 <tbody>
                                                                     <%--   long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour--%>
 
-
+                                                                <c:if test="${tourDescriptionPair.getTotalDescription() == 0}">
+                                                                    <h6 style="color: #0c85d0">Hiện tại chưa có hành trình tour nào. Xin Quý Khách vui lòng liên hệ với tổng đài hoặc chờ đợi khi có hành trình mới.</h6>
+                                                                </c:if>
                                                                 <c:forEach var="descriptionTourItem" items="${tourDescriptionPair.getDescriptionTour()}" varStatus="loopStatus">
 
                                                                         <tr>
@@ -170,12 +170,20 @@
                                                                             <td>${descriptionTourItem.dateStart}</td>
                                                                             <td>${descriptionTourItem.dateEnd}</td>
                                                                             <td>${descriptionTourItem.description}</td>
-                                                                            <td>${descriptionTourItem.price} đ</td>
+                                                                            <td>${descriptionTourItem.getCurrentVND()}</td>
                                                                             <td>Còn ${descriptionTourItem.seatResidual} chỗ</td>
                                                                             <td>
-                                                                                <button type="button" class="btn btn-primary" onclick="showCustomAlert(${descriptionTourItem.id}, ${descriptionTourItem.seatResidual}, ${descriptionTourItem.price})">
-                                                                                    Book
-                                                                                </button>
+                                                                                <c:if test="${accountCustomer == null}">
+                                                                                    <a type="button" class="btn btn-primary" onclick="return confirm('Bạn cần có tài khoản mới đặt tour được, bạn có muốn chuyển sang trang đăng ký không?')" href="${pageContext.request.contextPath}/auth?action=register">
+                                                                                        Book
+                                                                                    </a>
+                                                                                </c:if>
+                                                                                <c:if test="${accountCustomer != null}">
+                                                                                    <button type="button" class="btn btn-primary" onclick="showCustomAlert(${descriptionTourItem.id}, ${descriptionTourItem.seatResidual}, ${descriptionTourItem.price})">
+                                                                                        Book
+                                                                                    </button>
+                                                                                </c:if>
+
                                                                             </td>
                                                                         </tr>
 
@@ -207,12 +215,6 @@
     </div>
 </div>
 
-<div class="container mt-5">
-    <h2>Sample Form</h2>
-    <button type="button" class="btn btn-success" onclick="showCustomAlert()">
-        Success Button
-    </button>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -236,7 +238,7 @@
                 const type = document.getElementById('type').value;
 
                 if(seatPlace <= seat && seatPlace > 0) {
-                    window.location.href = "/customer?action=booking&id="+ id + "&seat=" + seatPlace + "&price=" + seat*price + "&pay=" + type + "";
+                    window.location.href = "/customer?action=booking&id="+ id + "&seat=" + seatPlace + "&price=" + seatPlace*price + "&pay=" + type + "";
                 }
             }
         });

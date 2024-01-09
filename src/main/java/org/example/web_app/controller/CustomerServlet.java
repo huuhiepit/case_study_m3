@@ -6,7 +6,7 @@ import org.example.web_app.dao.impl.IDescriptionTourDAO;
 import org.example.web_app.dao.impl.ITourDAO;
 import org.example.web_app.model.Tour;
 import org.example.web_app.service.CustomerService;
-import org.example.web_app.util.TourDescriptionPair;
+import org.example.web_app.model.TourDescriptionPair;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

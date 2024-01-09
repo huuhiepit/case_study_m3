@@ -8,7 +8,7 @@ import java.util.List;
 public interface IBookingDAO {
     List<Booking> getAll();
 
-    void handleTourBooking(long id, EStatus status);
+    void handleTourBooking(long id, long idEmployee, EStatus status);
 
     void createBooking(Booking booking);
 }

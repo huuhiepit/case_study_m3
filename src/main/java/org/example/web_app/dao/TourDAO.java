@@ -16,6 +16,30 @@ public class TourDAO extends ConnectionDB implements ITourDAO {
     protected String INSERT_INTO_TOUR = "call db_manager_tour.insertIntoTour(?, ?, ?);";
     protected String UPDATE_TOUR = "call db_manager_tour.updateTour(?, ?, ?, ?);";
     protected String DELETE_TOUR = "call db_manager_tour.deleteTour(?);";
+    protected String SEARCH_TYPE_TOUR = "SELECT * FROM db_manager_tour.view_tour where type = ?;";
+    @Override
+    public List<Tour> searchTypeTour(String type) {
+        List<Tour> tours = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = getConnection().prepareStatement(SEARCH_TYPE_TOUR);
+            statement.setString(1, type);
+            System.out.println(statement);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                //long id, String name, String urlImage, EType type, int total
+                tours.add(new Tour(rs.getLong("id"),
+                        rs.getString("name"),
+                        rs.getString("urlImage"),
+                        EType.valueOf(rs.getString("type")),
+                        rs.getInt("totalTrips")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return tours;
+    }
     @Override
     public List<Tour> getAll() {
         List<Tour> tours = new ArrayList<>();
