@@ -2,8 +2,11 @@ package org.example.web_app.model;
 
 import org.example.web_app.model.en.EStatus;
 import org.example.web_app.model.en.EStatusTour;
+import org.example.web_app.util.ConvertToVND;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 public class DescriptionTour {
     private long id;
@@ -14,6 +17,7 @@ public class DescriptionTour {
     private EStatusTour status;
     private String description;
     private long idTour;
+    private int seatResidual;
 
     public DescriptionTour() {}
     public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour) {
@@ -43,6 +47,27 @@ public class DescriptionTour {
         this.price = price;
         this.description = description;
         this.idTour = idTour;
+    }
+
+
+    public DescriptionTour(long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour, int seatResidual) {
+        this.id = id;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.seat = seat;
+        this.price = price;
+        this.status = status;
+        this.description = description;
+        this.idTour = idTour;
+        this.seatResidual = seatResidual;
+    }
+
+    public int getSeatResidual() {
+        return seatResidual;
+    }
+
+    public void setSeatResidual(int seatResidual) {
+        this.seatResidual = seatResidual;
     }
 
     public long getId() {
@@ -108,7 +133,12 @@ public class DescriptionTour {
     public void setIdTour(long idTour) {
         this.idTour = idTour;
     }
-
+    public String getCurrentVND() {
+        return ConvertToVND.convertToVND(this.price);
+    }
+    public long getDateDiff() {
+        return ChronoUnit.DAYS.between(dateStart, dateEnd);
+    }
     @Override
     public String toString() {
         return "DescriptionTour{" +

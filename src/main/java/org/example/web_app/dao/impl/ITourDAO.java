@@ -5,6 +5,8 @@ import org.example.web_app.model.Tour;
 import java.util.List;
 
 public interface ITourDAO {
+    List<Tour> searchTypeTour(String type);
+
     List<Tour> getAll();
     Tour getBy(long idTour);
     boolean add(Tour tour);

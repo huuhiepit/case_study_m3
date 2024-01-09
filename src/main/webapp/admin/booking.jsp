@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        Manager Description Tour
+        Manager Tour
     </title>
     <!-- Favicon -->
     <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png">
@@ -32,53 +32,51 @@
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
-                            <h3 class="mb-0">Description Tour Manager!  <span class="text-blue">Tour: ${tour.name}</span></h3>
-                            <div>
-                                <a href="/manager-description-tour?action=create&id=${tour.id}" class="btn btn-outline-secondary">
-                                    <i class="ni ni-fat-add"></i>
-                                    Add Description Tour
-                                </a>
-                            </div>
+                            <h3 class="mb-0">Booking Manager</h3>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Date Start</th>
-                                    <th scope="col">Date End</th>
-                                    <th scope="col">Seat</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Description</th>
+                                    <th scope="col">Mã Booking</th>
+                                    <th scope="col">Đặt chỗ</th>
+                                    <th scope="col">Tổng giá trị</th>
+
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Thanh toán</th>
+                                    <th scope="col">Khách đặt</th>
+                                    <th scope="col">Nhân viên</th>
+                                    <th scope="col">Mã hành trình</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="descriptionTour" items="${descriptionTourList}">
-<%--                                    long id, LocalDate dateStart, LocalDate dateEnd, int seat, long price, EStatusTour status, String description, long idTour--%>
-                                    <tr id="tour-${descriptionTour.id}">
-                                        <td scope="row">
-                                            <div class="media align-items-center">
-                                                <a href="#" class="avatar rounded-circle mr-3">
-                                                    <img alt="Image placeholder" src="../assets/img/tour/${tour.urlImage}">
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td>${descriptionTour.dateStart}</td>
-                                        <td>${descriptionTour.dateEnd}</td>
-                                        <td>${descriptionTour.seat}</td>
-                                        <td>${descriptionTour.getCurrentVND()}</td>
-                                        <td>${descriptionTour.status.getStatus()}</td>
-                                        <td>${descriptionTour.description}</td>
+                                <c:forEach var="booking" items="${bookingList}">
+<%--                                    //                long id, int seat, long totalPrice,--%>
+<%--                                    //                LocalDate dateBooking, EStatus status,--%>
+<%--                                    //                EPay pay, String customerName, String customerPhone,--%>
+<%--                                    //                String tourName, long idDescriptionTour, LocalDate dateStat,--%>
+<%--                                    //                LocalDate dateEnd, String employeeName, String employeePhone--%>
+                                    <tr id="tour-${booking.id}">
+                                        <td>${booking.id}</td>
+                                        <td>${booking.seat}</td>
+                                        <td>${booking.getCurrentVND()}</td>
+
+                                        <td>${booking.status.getStatus()}</td>
+                                        <td>${booking.pay.getPay()}</td>
+                                        <td>${booking.customerName}</td>
+                                        <td>${booking.employeeName}</td>
+                                        <td>${booking.idDescriptionTour}</td>
+
                                         <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item text-blue" href="./manager-description-tour?action=edit&id=${tour.id}&idDescriptionTour=${descriptionTour.id}">Edit</a>
-                                                    <a class="dropdown-item text-red" onclick="return confirm('Bạn có muốn xóa Description Tour có id: ${descriptionTour.id} này không?')" href="./manager-description-tour?action=delete&id=${tour.id}&idDescriptionTour=${descriptionTour.id}">Delete</a>
+                                                    <a class="dropdown-item text-blue" onclick="return confirm('Bạn chấp nhận đơn đặt tour: ${booking.id} này không?')" href="/manager-booking?action=update&id=${booking.id}&status=PROCESSING">Nhận đơn đặt</a>
+                                                    <a class="dropdown-item text-red" onclick="return confirm('Bạn có muốn hủy đơn đặt này không: ${booking.id} này không?')" href="/manager-booking?action=update&id=${booking.id}&status=CANCEL">Hủy đơn</a>
+                                                    <a class="dropdown-item text-orange" onclick="return confirm('Bạn muốn thay đổi lại trạng thái của đơn đặt tour: ${booking.id} này không?')" href="/manager-booking?action=update&id=${booking.id}&status=PROCESSED">Đổi về trạng thái ban đầu</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -113,6 +111,7 @@
 <!--   Argon JS   -->
 <script src="./assets/js/argon-dashboard.min.js?v=1.1.2"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 package org.example.web_app.model;
 
 import org.example.web_app.model.en.EPay;
+import org.example.web_app.model.en.EStatus;
 import org.example.web_app.model.en.EStatusTour;
+import org.example.web_app.util.ConvertToVND;
 
 import java.time.LocalDate;
 
@@ -10,28 +12,67 @@ public class Booking {
     private int seat;
     private long totalPrice;
     private LocalDate dateBooking;
-    private EStatusTour statusTour;
+    private EStatus status;
     private EPay pay;
+    private long idCustomer;
     private String customerName;
-    private String phone;
+    private String customerPhone;
     private String tourName;
+    private long idDescriptionTour;
     private LocalDate dateStat;
     private LocalDate dateEnd;
+    private String idEmployee;
     private String employeeName;
+    private String employeePhone;
 
-    public Booking(long id, int seat, long totalPrice, LocalDate dateBooking, EStatusTour statusTour, EPay pay, String customerName, String phone, String tourName, LocalDate dateStat, LocalDate dateEnd, String employeeName) {
+    public Booking() {}
+    public Booking(long id, int seat, long totalPrice, LocalDate dateBooking, EStatus status, EPay pay, String customerName, String customerPhone, String tourName, long idDescriptionTour, LocalDate dateStat, LocalDate dateEnd, String employeeName, String employeePhone) {
         this.id = id;
         this.seat = seat;
         this.totalPrice = totalPrice;
         this.dateBooking = dateBooking;
-        this.statusTour = statusTour;
+        this.status = status;
         this.pay = pay;
         this.customerName = customerName;
-        this.phone = phone;
+        this.customerPhone = customerPhone;
         this.tourName = tourName;
+        this.idDescriptionTour = idDescriptionTour;
         this.dateStat = dateStat;
         this.dateEnd = dateEnd;
         this.employeeName = employeeName;
+        this.employeePhone = employeePhone;
+    }
+
+    public Booking(int seat, long totalPrice, EPay pay, long idCustomer, long idDescriptionTour) {
+        this.seat = seat;
+        this.totalPrice = totalPrice;
+        this.pay = pay;
+        this.idCustomer = idCustomer;
+        this.idDescriptionTour = idDescriptionTour;
+    }
+
+    public long getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(long idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(String idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public String getEmployeePhone() {
+        return employeePhone;
+    }
+
+    public void setEmployeePhone(String employeePhone) {
+        this.employeePhone = employeePhone;
     }
 
     public long getId() {
@@ -66,12 +107,12 @@ public class Booking {
         this.dateBooking = dateBooking;
     }
 
-    public EStatusTour getStatusTour() {
-        return statusTour;
+    public EStatus getStatus() {
+        return status;
     }
 
-    public void setStatusTour(EStatusTour statusTour) {
-        this.statusTour = statusTour;
+    public void setStatus(EStatus status) {
+        this.status = status;
     }
 
     public EPay getPay() {
@@ -90,12 +131,12 @@ public class Booking {
         this.customerName = customerName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getCustomerPhone() {
+        return customerPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
     }
 
     public String getTourName() {
@@ -104,6 +145,14 @@ public class Booking {
 
     public void setTourName(String tourName) {
         this.tourName = tourName;
+    }
+
+    public long getIdDescriptionTour() {
+        return idDescriptionTour;
+    }
+
+    public void setIdDescriptionTour(long idDescriptionTour) {
+        this.idDescriptionTour = idDescriptionTour;
     }
 
     public LocalDate getDateStat() {
@@ -129,6 +178,9 @@ public class Booking {
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
+    public String getCurrentVND() {
+        return ConvertToVND.convertToVND(this.totalPrice);
+    }
 
     @Override
     public String toString() {
@@ -137,11 +189,12 @@ public class Booking {
                 ", seat=" + seat +
                 ", totalPrice=" + totalPrice +
                 ", dateBooking=" + dateBooking +
-                ", statusTour=" + statusTour +
+                ", status=" + status +
                 ", pay=" + pay +
                 ", customerName='" + customerName + '\'' +
-                ", phone='" + phone + '\'' +
+                ", phone='" + customerPhone + '\'' +
                 ", tourName='" + tourName + '\'' +
+                ", idDescriptionTour=" + idDescriptionTour +
                 ", dateStat=" + dateStat +
                 ", dateEnd=" + dateEnd +
                 ", employeeName='" + employeeName + '\'' +

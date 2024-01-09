@@ -103,7 +103,7 @@
                                         <select  name="type" class="form-control" >
                                             <option value="${tour.type}">${tour.type.getType()}</option>
                                             <c:forEach var="type" items="${typeList}">
-                                                <option value="${type}">${type.getType()}</option>
+                                                <c:if test="${type != tour.type}"><option value="${type}">${type.getType()}</option></c:if>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -113,6 +113,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success">Update</button>
+                                        <a href="/manager-tour" class="btn btn-info">Return</a>
                                     </div>
                                 </form>
                             </c:when>
@@ -137,6 +138,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success">Add</button>
+                                        <a href="/manager-tour" class="btn btn-info">Return</a>
                                     </div>
                                 </form>
                             </c:otherwise>

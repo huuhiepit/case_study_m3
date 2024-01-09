@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "tourServlet", urlPatterns = "/manager-tour")
@@ -26,6 +27,13 @@ public class TourServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        HttpSession session = req.getSession(true);
+
+        // Kiểm tra xem có giá trị "account" trong session không
+        if (session.getAttribute("account") == null) {
+            resp.sendRedirect("/auth");
+            return; // Kết thúc xử lý servlet sau khi chuyển hướng
+        }
         String action = req.getParameter("action");
         if(action == null) {
             action = "";
@@ -43,11 +51,21 @@ public class TourServlet extends HttpServlet {
                 delete(req, resp);
                 break;
             }
+            case "search": {
+                showSearchTour(req, resp);
+                break;
+            }
             case "": {
                 showAllTour(req, resp);
                 break;
             }
         }
+    }
+
+    private void showSearchTour(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("tourList", tourDAO.searchTypeTour(req.getParameter("type")));
+        req.setAttribute("type", req.getParameter("type"));
+        req.getRequestDispatcher("admin/tour.jsp").forward(req, resp);
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {

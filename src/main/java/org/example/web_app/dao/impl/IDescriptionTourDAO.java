@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface IDescriptionTourDAO {
     List<DescriptionTour> getAll(long idTour);
+
+    List<DescriptionTour> getBookingDescriptionTourBy(long idTour);
+
     DescriptionTour getBy(long idDescription);
     boolean insertInto(DescriptionTour descriptionTour);
     boolean update(DescriptionTour descriptionTour);
